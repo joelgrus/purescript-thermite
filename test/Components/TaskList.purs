@@ -92,7 +92,7 @@ taskList = container $ fold
     -- The `NewTask` action is handled here
     -- Everything else is handled by some other child component so is ignored here.
     performAction :: T.PerformAction eff TaskListState props TaskListAction
-    performAction (NewTask s) _ state k = k $ state { tasks = Cons (initialTask s) state.tasks }
+    performAction (NewTask s) _ state k = k $ state { tasks = Cons (initialTask s) state.tasks, editText = "" }
     performAction _ _ _ _ = pure unit
 
   -- This function wraps a `Spec`'s `Render` function to filter out tasks.
